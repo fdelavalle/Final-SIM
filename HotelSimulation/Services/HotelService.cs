@@ -19,7 +19,7 @@ public class HotelService : IHotelService
         Fila? actual = null;
         
         var maxDiaAMostrar = createSimulationDto.DiaHasta - createSimulationDto.DiaDesde < 100 ? 
-            createSimulationDto.DiaHasta : 100;
+            createSimulationDto.DiaHasta : createSimulationDto.DiaDesde + 100;
         
         for (var dia = 1; dia <= createSimulationDto.CantidadDiasAGenerar; dia++)
         {
