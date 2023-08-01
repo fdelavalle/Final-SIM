@@ -1,4 +1,5 @@
-﻿using HotelSimulation.Services;
+﻿using HotelSimulation.Models;
+using HotelSimulation.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelSimulation.Controllers;
@@ -14,7 +15,7 @@ public class HotelController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult Get()
+    public ActionResult<List<Fila>> Get()
     {
         var hotels = _hotelService.GetSimulation();
         return Ok(hotels);

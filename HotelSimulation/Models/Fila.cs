@@ -3,11 +3,11 @@
 public class Fila
 {
     private static int _reservaDesde = 192;
-    private int Dia { get; }
-    private double RndReserva { get;}
-    private int Reservas { get; }
-    private double RndReservaSinAsistencia { get;  }
-    private int ReservasSinAsistencia { get;  }
+    public int Dia { get; }
+    public double RndReserva { get;}
+    public int Reservas { get; }
+    public double RndReservaSinAsistencia { get;  }
+    public int ReservasSinAsistencia { get;  }
     public int Asistencia { get;}
     public double CostoHabitacionOcupada { get;}
     public double CostoHabitacionNoOcupada { get;  }

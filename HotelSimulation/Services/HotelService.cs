@@ -17,7 +17,7 @@ public class HotelService : IHotelService
         Fila? anterior = null;
         Fila? actual = null;
 
-        var cantidadDiasAGenerar = 10;
+        var cantidadDiasAGenerar = 20;
         
         var probabilidades = new Dictionary<int, double>()
         {
@@ -37,7 +37,7 @@ public class HotelService : IHotelService
         {
             var rndReservas = random.NextDouble();
             var rndReservasSinAsistencia = random.NextDouble();
-            actual = new Fila(1, rndReservas, rndReservasSinAsistencia,
+            actual = new Fila(dia, rndReservas, rndReservasSinAsistencia,
              probabilidades, 110, 70,
              400, 300, 0, 200,
              208);
@@ -45,12 +45,12 @@ public class HotelService : IHotelService
             if (dia == 1)
             {
                 actual.AcumuladorUtilidadDiaria = actual.CalculateAcumuladorUtilidadDiaria
-                    (0, actual.AcumuladorUtilidadDiaria);
+                    (0, actual.Utilidad);
             }
             else
             {
                 actual.AcumuladorUtilidadDiaria = actual.CalculateAcumuladorUtilidadDiaria
-                    (anterior!.AcumuladorUtilidadDiaria, actual.AcumuladorUtilidadDiaria);
+                    (anterior!.AcumuladorUtilidadDiaria, actual.Utilidad);
             }
             anterior = actual;
             if ((dia >= diaDesde && dia < diaDesde + 100) || dia == cantidadDiasAGenerar)
@@ -58,7 +58,7 @@ public class HotelService : IHotelService
                 tcs.Add(actual);
             }
         }
-
+        watch.Stop();
         return tcs;
 
     }
