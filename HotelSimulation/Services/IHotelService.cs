@@ -1,8 +1,9 @@
-﻿using HotelSimulation.Models;
+﻿using HotelSimulation.Dtos;
+using HotelSimulation.Models;
 
 namespace HotelSimulation.Services;
 
 public interface IHotelService
 { 
-    List<Fila> GetSimulation();
+    GetSimulationResponseDto GetSimulation(CreateSimulationDto createSimulationDto);
 }

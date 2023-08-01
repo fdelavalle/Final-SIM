@@ -1,4 +1,5 @@
-﻿using HotelSimulation.Models;
+﻿using HotelSimulation.Dtos;
+using HotelSimulation.Models;
 using HotelSimulation.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +16,10 @@ public class HotelController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<List<Fila>> Get()
+    public ActionResult<GetSimulationResponseDto> CreateSimulation([FromBody] CreateSimulationDto data)
     {
-        var hotels = _hotelService.GetSimulation();
+        
+        var hotels = _hotelService.GetSimulation(data);
         return Ok(hotels);
     }
     

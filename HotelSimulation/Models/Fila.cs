@@ -2,7 +2,6 @@
 
 public class Fila
 {
-    private static int _reservaDesde = 192;
     public int Dia { get; }
     public double RndReserva { get;}
     public int Reservas { get; }
@@ -19,12 +18,12 @@ public class Fila
     public Fila(int dia, double rndReserva, 
         double rndReservaSinAsistencia, Dictionary<int, double> probabilidadesReservasSinAsistenciaAc, 
         double costoIndividualHabitacionOcupada, double costoIndividualHabitacionNoOcupada, 
-        double costoIndividualRecibirPersonaSinLugar, double precioHabitacion, double utilidadDiaAnterior, 
-        int habitaciones, int cantidadReservasTomables)
+        double costoIndividualRecibirPersonaSinLugar, double precioHabitacion, int habitaciones, int reservaHasta, 
+        int reservaDesde)
     {
         Dia = dia;
         RndReserva = rndReserva;
-        Reservas = CalculateReservas(rndReserva, cantidadReservasTomables);
+        Reservas = CalculateReservas(rndReserva, reservaHasta, reservaDesde);
         RndReservaSinAsistencia = rndReservaSinAsistencia;
         ReservasSinAsistencia = CalculateReservasSinAsistencias(rndReservaSinAsistencia, 
             probabilidadesReservasSinAsistenciaAc);
@@ -105,9 +104,9 @@ public class Fila
         return reservasSinAsistencia;
     }
     
-    private static int CalculateReservas(double rndReserva, int cantidadReservasTomables)
+    private static int CalculateReservas(double rndReserva, int cantidadReservasTomables, int reservaDesde)
     {
-        var resevas =  Convert.ToInt32(_reservaDesde + rndReserva * (cantidadReservasTomables - _reservaDesde));
+        var resevas =  Convert.ToInt32(reservaDesde + rndReserva * (cantidadReservasTomables - reservaDesde));
         return resevas;
     }
 }

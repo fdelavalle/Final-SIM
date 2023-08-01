@@ -1,46 +1,36 @@
 ﻿using System.Diagnostics;
+using HotelSimulation.Dtos;
 using HotelSimulation.Models;
 
 namespace HotelSimulation.Services;
 
 public class HotelService : IHotelService
 {
-    public List<Fila> GetSimulation()
+    public GetSimulationResponseDto GetSimulation(CreateSimulationDto createSimulationDto)
     {
-        var tcs = new List<Fila>();
-        Stopwatch watch = new Stopwatch();
+        var filasSimulacionAMostrar = new List<Fila>();
+        var watch = new Stopwatch();
         watch.Start();
         var random = new Random();
-
-        var diaDesde = 0;
+        var reservasConProbabildadAcumulada = 
+            CalculateProbabilidadAcumulada(createSimulationDto.ReservasSinAsistencia);
 
         Fila? anterior = null;
         Fila? actual = null;
-
-        var cantidadDiasAGenerar = 20;
         
-        var probabilidades = new Dictionary<int, double>()
-        {
-            {0, 0.04},
-            {1, 0.12},
-            {2, 0.24},
-            {3, 0.40},
-            {4, 0.59},
-            {5, 0.72},
-            {6, 0.83},
-            {7, 0.91},
-            {8, 0.96},
-            {9, 1.00},
-        };
-
-        for (int dia = 1; dia <= cantidadDiasAGenerar; dia++)
+        var maxDiaAMostrar = createSimulationDto.DiaHasta - createSimulationDto.DiaDesde < 100 ? 
+            createSimulationDto.DiaHasta : 100;
+        
+        for (var dia = 1; dia <= createSimulationDto.CantidadDiasAGenerar; dia++)
         {
             var rndReservas = random.NextDouble();
             var rndReservasSinAsistencia = random.NextDouble();
+            
             actual = new Fila(dia, rndReservas, rndReservasSinAsistencia,
-             probabilidades, 110, 70,
-             400, 300, 0, 200,
-             208);
+                reservasConProbabildadAcumulada, createSimulationDto.CostoHabitacionOcupada, 
+                createSimulationDto.CostoHabitacionNoOcupada,
+                createSimulationDto.CostoRecibirPersonasSinLugar, createSimulationDto.PrecioHabitacion, 
+                createSimulationDto.CantidadHabitaciones, createSimulationDto.CantidadReservasTomables, createSimulationDto.UniformeDesde);
 
             if (dia == 1)
             {
@@ -52,14 +42,38 @@ public class HotelService : IHotelService
                 actual.AcumuladorUtilidadDiaria = actual.CalculateAcumuladorUtilidadDiaria
                     (anterior!.AcumuladorUtilidadDiaria, actual.Utilidad);
             }
+            
             anterior = actual;
-            if ((dia >= diaDesde && dia < diaDesde + 100) || dia == cantidadDiasAGenerar)
+            
+            if ((dia >= createSimulationDto.DiaDesde && dia <= maxDiaAMostrar)
+                || dia == createSimulationDto.CantidadDiasAGenerar)
             {
-                tcs.Add(actual);
+                filasSimulacionAMostrar.Add(actual);
             }
         }
         watch.Stop();
-        return tcs;
-
+        return new GetSimulationResponseDto()
+        {
+            Simulacion = filasSimulacionAMostrar,
+            UtilidadPromedio = CalculatePromedio(actual!.AcumuladorUtilidadDiaria, createSimulationDto.CantidadDiasAGenerar),
+            TiempoDeEjecucion = watch.Elapsed.TotalSeconds
+        };
     }
+    
+    private static Dictionary<int, double> CalculateProbabilidadAcumulada(Dictionary<int, double> probabilidades)
+    {
+        var accumulatedValues = new Dictionary<int, double>();
+        double accumulatedValue = 0;
+
+        foreach (var kvp in probabilidades.OrderBy(kvp => kvp.Key))
+        {
+            accumulatedValue += kvp.Value;
+            accumulatedValues[kvp.Key] = accumulatedValue;
+        }
+
+        return accumulatedValues;
+    }
+
+    private static double CalculatePromedio(double total, int cantidad)
+        => Math.Round(total / cantidad, 2);
 }
