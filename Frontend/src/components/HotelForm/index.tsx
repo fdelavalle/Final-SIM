@@ -38,7 +38,6 @@ export default function HotelForm(props) {
 
   return (
     <div className="form-container">
-      <h1>Simulacion Hotel</h1>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -175,15 +174,19 @@ export default function HotelForm(props) {
                   <h3>
                     Tiempo de ejecucion:
                     {' '}
-                    {executionTime}
-                    {' '}
-                    segundos
+                    <span className="blue-text">
+                      {executionTime}
+                      {' '}
+                      segundos
+                    </span>
                   </h3>
                   <h3>
                     Utilidad Promedio:
                     {' '}
-                    $
-                    {averageUtility}
+                    <span className="green-text">
+                      $
+                      {averageUtility}
+                    </span>
                   </h3>
                 </div>
               </div>

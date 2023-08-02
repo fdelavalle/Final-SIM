@@ -23,13 +23,10 @@ body {
 
 
 .container {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  max-height: 600px;
-  overflow-y: scroll;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  height: 800px !important;
+  overflow-y: scroll;;
+  /* -webkit-transform: translate(-50%, -50%);
+  transform: translate(0%, 10%); */
 }
 table {
   width: 800px;
@@ -73,7 +70,6 @@ tbody td:hover:before {
 }
 
 .results {
-  position: absolute;
   left: 65%;
 }
 
@@ -83,7 +79,6 @@ tbody td:hover:before {
   align-items: center;
 }
 
-/* styles.css */
 .form-container {
   max-width: 1500px;
   margin: 0 auto;
@@ -184,4 +179,20 @@ button[type='submit']:hover {
 
 .pt-1 {
   padding-top: 15px;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.blue-text {
+  color: #3498db;
+}
+
+.green-text {
+  color: #2ecc71;
 }
