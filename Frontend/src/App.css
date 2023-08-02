@@ -18,9 +18,7 @@ body {
   margin: 0;
   font-family: sans-serif;
   font-weight: 100;
-  background: #20002c;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #cbb4d4, #20002c);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #cbb4d4, #20002c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #2e4053;
 }
 
 
@@ -50,7 +48,7 @@ th {
   text-align: left;
 }
 thead th {
-  background-color: #55608f;
+  background-color: #d6d6d6a1;
 }
 tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.3);
@@ -70,8 +68,8 @@ tbody td:hover:before {
 }
 
 .form {
-  position: absolute;
   width: 100vw;
+  margin-left: 25px;
 }
 
 .results {
@@ -87,7 +85,7 @@ tbody td:hover:before {
 
 /* styles.css */
 .form-container {
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -107,10 +105,17 @@ tbody td:hover:before {
   display: flex;
   flex-direction: column;
   width: 300px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 15px;
 }
 
 .form-group {
+  position: relative;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 label {
@@ -118,7 +123,8 @@ label {
 }
 
 input[type='number'] {
-  width: 100%;
+  width: 20%;
+  height: 10px;
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -128,15 +134,16 @@ input[type='number'] {
 button[type='submit'] {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: rgba(255, 255, 255, 0.3);
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 25px;
 }
 
 button[type='submit']:hover {
-  background-color: #0056b3;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .probabilidad {
@@ -147,19 +154,34 @@ button[type='submit']:hover {
   margin-right: 20px;
 }
 
-.probabilidad p {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-bottom: 1px;
-  padding-left: 20px;
-}
-
 .probabilidad input {
   width: 40px;
-  height: 15px;
+  height: 6px;
   margin-left: 20px;
 }
 
-.margin-top {
-  padding-top: 10px;
+.error {
+  font-size: 12px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: rgb(175, 12, 12);
+}
+
+.error-probabilidad {
+  position: absolute;
+  font-size: 12px;
+  top: 100%;
+  right:75%;
+  color: rgb(175, 12, 12);
+  width: 100%;
+}
+
+.numbers {
+  margin-bottom: 10px !important;
+  margin-left: 60px;
+}
+
+.pt-1 {
+  padding-top: 15px;
 }

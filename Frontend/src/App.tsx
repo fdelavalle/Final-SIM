@@ -8,7 +8,6 @@ function App() {
   const [simulation, setSimulation] = useState([]);
   const [averageUtility, setUtilidadPromedio] = useState(0);
   const [executionTime, setTiempoDeEjecucion] = useState(0);
-  /* const [requestData, setRequestData] = useState(); */
 
   async function handleFetchSimulation(requestData): Promise<void> {
     const response = await axios.post('http://localhost:5000/api/hotel', { ...requestData });
@@ -50,24 +49,13 @@ function App() {
   return (
     <div>
       <div className="form">
-        <HotelForm sendDataToParent={handleDataFromChild} />
+        <HotelForm
+          sendDataToParent={handleDataFromChild}
+          averageUtility={averageUtility}
+          executionTime={executionTime}
+        />
       </div>
       <Table simulation={simulation} />
-      <div className="results">
-        <h2>
-          Utilidad Promedio:
-          {' '}
-          {averageUtility}
-        </h2>
-
-        <h2>
-          Tiempo de Ejecucion:
-          {' '}
-          {executionTime}
-          {' '}
-        </h2>
-      </div>
-
     </div>
   );
 }

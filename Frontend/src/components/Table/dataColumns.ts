@@ -5,7 +5,7 @@ const dataColums = [
   },
   {
     Header: 'RND Reservas',
-    accessor: 'rndReservas',
+    accessor: 'rndReserva',
   },
   {
     Header: 'Reservas',
@@ -13,7 +13,7 @@ const dataColums = [
   },
   {
     Header: 'RND Reservas Sin Asistencia',
-    accessor: 'rndReservasSinAsistencia',
+    accessor: 'rndReservaSinAsistencia',
   },
   {
     Header: 'Reservas Sin Asistencia',
@@ -33,7 +33,7 @@ const dataColums = [
   },
   {
     Header: 'Costo Recibir Personas Sin Lugar',
-    accessor: 'costoRecibirPersonasSinLugar',
+    accessor: 'costoRecibirPersonaSinLugar',
   },
   {
     Header: 'Ganancia Habitacion',
