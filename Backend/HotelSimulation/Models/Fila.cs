@@ -104,9 +104,9 @@ public class Fila
         return reservasSinAsistencia;
     }
     
-    private static int CalculateReservas(double rndReserva, int cantidadReservasTomables, int reservaDesde)
+    private static int CalculateReservas(double rndReserva, int reservaHasta, int reservaDesde)
     {
-        var resevas =  Convert.ToInt32(reservaDesde + rndReserva * (cantidadReservasTomables - reservaDesde));
+        var resevas =  Convert.ToInt32(reservaDesde + rndReserva * (reservaHasta - reservaDesde));
         return resevas;
     }
 }

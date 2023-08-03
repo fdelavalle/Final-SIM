@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  padding: 15px !important;
 }
 
 input::-webkit-outer-spin-button,
@@ -111,6 +112,7 @@ tbody td:hover:before {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #999
 }
 
 label {
@@ -160,7 +162,7 @@ button[type='submit']:hover {
   position: absolute;
   top: 100%;
   left: 0;
-  color: rgb(175, 12, 12);
+  color: red;
 }
 
 .error-probabilidad {
@@ -168,13 +170,14 @@ button[type='submit']:hover {
   font-size: 12px;
   top: 100%;
   right:75%;
-  color: rgb(175, 12, 12);
+  color: red;
   width: 100%;
 }
 
 .numbers {
   margin-bottom: 10px !important;
   margin-left: 60px;
+  color: #999;
 }
 
 .pt-1 {
@@ -195,4 +198,12 @@ button[type='submit']:hover {
 
 .green-text {
   color: #2ecc71;
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold; /* Optionally, make the title bold */
+  color: #999 /* Set the text color, you can use hex, rgb, or color names */
 }

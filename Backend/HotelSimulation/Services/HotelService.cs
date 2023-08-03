@@ -30,7 +30,7 @@ public class HotelService : IHotelService
                 reservasConProbabildadAcumulada, createSimulationDto.CostoHabitacionOcupada, 
                 createSimulationDto.CostoHabitacionNoOcupada,
                 createSimulationDto.CostoRecibirPersonasSinLugar, createSimulationDto.PrecioHabitacion, 
-                createSimulationDto.CantidadHabitaciones, createSimulationDto.CantidadReservasTomables, createSimulationDto.UniformeDesde);
+                createSimulationDto.CantidadHabitaciones, createSimulationDto.UniformeHasta, createSimulationDto.UniformeDesde);
 
             if (dia == 1)
             {

@@ -17,11 +17,12 @@ public class CreateSimulationDto
     };
 
     public int UniformeDesde { get; set; } = 192;
+    
+    public int UniformeHasta { get; set; } = 192;
     public int CantidadDiasAGenerar { get; set; } = 20;
     public int DiaDesde { get; set; } = 0;
     public int DiaHasta { get; set; } = 20;
     public int CantidadHabitaciones { get; set; } = 200;
-    public int CantidadReservasTomables { get; set; } = 208;
     public double PrecioHabitacion { get; set; } = 300;
     public double CostoHabitacionOcupada { get; set; } = 110;
     public double CostoHabitacionNoOcupada { get; set; } = 70;

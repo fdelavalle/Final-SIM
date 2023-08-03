@@ -49,6 +49,7 @@ function App() {
   return (
     <div className="App">
       <div className="form">
+        <h3 className="title">138 - Simulacion Hotel</h3>
         <HotelForm
           sendDataToParent={handleDataFromChild}
           averageUtility={averageUtility}
