@@ -207,3 +207,8 @@ button[type='submit']:hover {
   font-weight: bold; /* Optionally, make the title bold */
   color: #999 /* Set the text color, you can use hex, rgb, or color names */
 }
+
+.metrics {
+  font-size: 20px;
+  font-weight: bold;
+}

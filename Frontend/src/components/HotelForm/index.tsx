@@ -172,22 +172,20 @@ export default function HotelForm(props) {
                 <button type="submit">Generar</button>
                 <div>
                   <h3>
-                    Tiempo de ejecucion:
-                    {' '}
-                    <span className="blue-text">
+                    Tiempo de ejecucion  
+                  </h3>
+                  <span className="blue-text metrics">
                       {executionTime}
                       {' '}
                       segundos
                     </span>
-                  </h3>
                   <h3>
                     Utilidad Promedio:
-                    {' '}
-                    <span className="green-text">
+                  </h3>
+                  <span className="green-text metrics">
                       $
                       {averageUtility}
                     </span>
-                  </h3>
                 </div>
               </div>
             </div>

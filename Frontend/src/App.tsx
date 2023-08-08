@@ -12,7 +12,16 @@ function App() {
   async function handleFetchSimulation(requestData): Promise<void> {
     const response = await axios.post('http://localhost:5000/api/hotel', { ...requestData });
     const { simulacion, utilidadPromedio, tiempoDeEjecucion } = response.data;
-    setSimulation(simulacion);
+    const formattedSim = simulacion.map((sim) => {
+      return {
+        ...sim,
+        rndReserva: sim.rndReserva.toFixed(2),
+        rndReservaSinAsistencia: sim.rndReservaSinAsistencia.toFixed(2),
+        }
+      }
+    )
+
+    setSimulation(formattedSim);
     setUtilidadPromedio(utilidadPromedio);
     setTiempoDeEjecucion(tiempoDeEjecucion);
   }
