@@ -145,6 +145,7 @@ button[type='submit']:hover {
 
 .probabilidad {
   display: flex !important;
+  padding-top: 5px;
 }
 
 .probabilidad label {
@@ -155,6 +156,7 @@ button[type='submit']:hover {
   width: 40px;
   height: 6px;
   margin-left: 20px;
+  margin-top: 4px ;
 }
 
 .error {
@@ -177,7 +179,7 @@ button[type='submit']:hover {
 .numbers {
   margin-bottom: 10px !important;
   margin-left: 60px;
-  color: #999;
+  color: #fff;
 }
 
 .pt-1 {
