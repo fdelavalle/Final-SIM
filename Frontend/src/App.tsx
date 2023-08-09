@@ -15,8 +15,8 @@ function App() {
     const formattedSim = simulacion.map((sim) => {
       return {
         ...sim,
-        rndReserva: sim.rndReserva.toFixed(2),
-        rndReservaSinAsistencia: sim.rndReservaSinAsistencia.toFixed(2),
+        rndReserva: sim.rndReserva.toString().substring(0,4),
+        rndReservaSinAsistencia: sim.rndReservaSinAsistencia.toString().substring(0,4),
         }
       }
     )
